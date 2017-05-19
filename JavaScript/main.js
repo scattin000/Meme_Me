@@ -16,6 +16,7 @@ function displayVideo() {
         // set video standards 
         var constraints = {
             video: true,
+
             audio: false
         };
         // set up the video to display 
@@ -59,14 +60,16 @@ function displayPhoto() {
 function capturePhoto() {
     //if (videoPlaying) {
     var canvas = document.getElementById('canvasPhoto');
+    canvas.width = 640;
+    canvas.height = 480;
     var context = canvas.getContext('2d');
-    context.drawImage(video, 0, 0, 1920, 2560, 0, 0, 480, 640); //480,640);
+    context.drawImage(video, 0, 0);
 }
 
 function transitionDisplay() {
     // set the video to opaque & set the canvas to transparent 
 
     //swap the video for the picture
-    //document.getElementById("cameraDisplay").style.opacity = 0
+    document.getElementById("cameraDisplay").style.opacity = 0
     document.getElementById("canvasPhoto").style.opacity = 1
 }

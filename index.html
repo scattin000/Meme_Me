@@ -1,0 +1,26 @@
+!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="DAZ">
+    <script src="js/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+
+<body onLoad="displayVideo()">
+    <title>FARKLE</title>
+    <!--<button id="capture">Take a photo</button><br />-->
+    <section id="memeCanvas">
+        <!--Don't show until user selects "camera" button-->
+        <video id="cameraDisplay"></video>
+        <!--Display the canvas-->
+        <canvas id="canvasPhoto"></canvas>
+    </section>
+
+    <!-- Take the photo here-->
+    <button id="takePhoto" onclick="displayPhoto()">Take Photo</button>
+
+</body>
+
+</html>

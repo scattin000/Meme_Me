@@ -1,0 +1,19 @@
+#cameraDisplay {
+    position: relative;
+    opacity: 1;
+    transition: opacity 1s;
+    height: 480px;
+    width: 640px;
+}
+
+#canvasPhoto {
+    position: relative;
+    opacity: 1;
+    transition: opacity 1s;
+    height: 480px;
+    width: 640px;
+}
+
+button {
+    position: relative;
+}

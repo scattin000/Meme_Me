@@ -58,7 +58,6 @@ function displayPhoto() {
 }
 
 function capturePhoto() {
-    //if (videoPlaying) {
     var canvas = document.getElementById('canvasPhoto');
     canvas.width = 640;
     canvas.height = 480;
@@ -68,7 +67,6 @@ function capturePhoto() {
 
 function transitionDisplay() {
     // set the video to opaque & set the canvas to transparent 
-
     //swap the video for the picture
     document.getElementById("cameraDisplay").style.opacity = 0
     document.getElementById("canvasPhoto").style.opacity = 1

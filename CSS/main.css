@@ -8,6 +8,7 @@
 
 #canvasPhoto {
     position: relative;
+    margin-top: -30em;
     opacity: 1;
     transition: opacity 1s;
     height: 480px;

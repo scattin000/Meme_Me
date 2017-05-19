@@ -1,18 +1,20 @@
 #cameraDisplay {
     position: relative;
+    margin-left: -5em;
     opacity: 1;
     transition: opacity 1s;
-    height: 480px;
-    width: 640px;
+    height: 400px;
+    width: 600px;
 }
 
 #canvasPhoto {
     position: relative;
-    margin-top: -30em;
+    margin-top: -25em;
+    margin-left: -5em;
     opacity: 1;
     transition: opacity 1s;
-    height: 480px;
-    width: 640px;
+    height: 400px;
+    width: 600px;
 }
 
 button {

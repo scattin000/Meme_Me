@@ -59,8 +59,9 @@ function displayPhoto() {
 
 function capturePhoto() {
     var canvas = document.getElementById('canvasPhoto');
-    canvas.width = 640;
-    canvas.height = 480;
+    // set the size of the canvas image (took forever to figure this out!)
+    canvas.width = 600;
+    canvas.height = 400;
     var context = canvas.getContext('2d');
     context.drawImage(video, 0, 0);
 }

@@ -25,8 +25,8 @@ function displayVideo() {
             var url = window.URL || window.webkitURL;
 
             video = document.getElementById("cameraDisplay")
-
-            // create the url and set the source of the video element
+                // try to set up the video size
+                // create the url and set the source of the video element
             video.src = url ? url.createObjectURL(stream) : stream
 
             // Start the video
@@ -51,7 +51,6 @@ function hideVideo() {
     // document.getElementById("cameraDisplay").style.height = "0px"
     document.getElementById("cameraDisplay").style.height = "0px"
 }*/
-
 function displayPhoto() {
     capturePhoto()
     transitionDisplay()
@@ -60,8 +59,14 @@ function displayPhoto() {
 function capturePhoto() {
     var canvas = document.getElementById('canvasPhoto');
     // set the size of the canvas image (took forever to figure this out!)
-    canvas.width = 600;
-    canvas.height = 400;
+    var deviceWidth = window.innerWidth;
+    var canvasWidth = Math.min(600, deviceWidth - 20);
+    var canvasHeight = Math.min(480, deviceWidth - 20);
+
+    canvas.width = canvasWidth;
+    canvas.height = canvasHeight;
+    //canvas.width = 600;
+    //canvas.height = 400;
     var context = canvas.getContext('2d');
     context.drawImage(video, 0, 0);
 }

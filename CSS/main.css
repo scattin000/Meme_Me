@@ -1,5 +1,6 @@
 #cameraDisplay {
     position: relative;
+    margin-top: 10em;
     margin-left: -5em;
     opacity: 1;
     transition: opacity 1s;
@@ -13,8 +14,6 @@
     margin-left: -5em;
     opacity: 1;
     transition: opacity 1s;
-    height: 400px;
-    width: 600px;
 }
 
 button {

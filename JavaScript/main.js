@@ -65,6 +65,17 @@ function transitionDisplay() {
     document.getElementById("cameraDisplay").style.opacity = 0
     document.getElementById("canvasPhoto").style.opacity = 1
 }
+function createInputTextBox() {
+    //create text input box
+    var addText = document.createElement("INPUT");
+    addText.setAttribute("type", "text");
+    document.getElementById("myText").maxLength = "30";
+}
+
+function moveTextInputBox() {
+    //Enable user to move textBox on captured photo
+}
+
 
 
 ///////////////////////////////////////
@@ -81,3 +92,4 @@ function hideVideo() {
     // document.getElementById("cameraDisplay").style.height = "0px"
     document.getElementById("cameraDisplay").style.height = "0px"
 }*/
+

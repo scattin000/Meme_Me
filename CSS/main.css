@@ -1,10 +1,8 @@
 #cameraDisplay {
     position: relative;
     margin-top: 10em;
-    margin-left: -5em;
     opacity: 1;
     transition: opacity 1s;
-    overflow: hidden;
 }
 
 #canvasPhoto {

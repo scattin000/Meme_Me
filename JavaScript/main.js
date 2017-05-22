@@ -1,5 +1,15 @@
 ///DOM Objects///
 var video = null;
+//sizing variables
+var deviceWidth = window.innerWidth;
+
+//canvas size 
+var canvasWidth = Math.min(480, deviceWidth - 20);;
+var canvasHeight = Math.min(480, deviceWidth - 20);;
+//video size
+var videoWidth = Math.min(600, deviceWidth - 20);
+var videoHeight = Math.min(480, deviceWidth - 20);
+
 
 function checkUserMedia() {
     return navigator.getUserMedia = navigator.getUserMedia ||
@@ -25,7 +35,9 @@ function displayVideo() {
 
             video = document.getElementById("cameraDisplay")
                 // try to set up the video size
-                // create the url and set the source of the video element
+            video.width = videoWidth;
+            video.height = videoHeight;
+            // create the url and set the source of the video element
             video.src = url ? url.createObjectURL(stream) : stream
 
             // Start the video
@@ -46,17 +58,14 @@ function displayPhoto() {
 
 function capturePhoto() {
     var canvas = document.getElementById('canvasPhoto');
-    // set the size of the canvas image (took forever to figure this out!)
-    var deviceWidth = window.innerWidth;
-    var canvasWidth = Math.min(600, deviceWidth - 20);
-    var canvasHeight = Math.min(480, deviceWidth - 20);
 
+    // set the size of the canvas image (took forever to figure this out!)
     canvas.width = canvasWidth;
     canvas.height = canvasHeight;
-    //canvas.width = 600;
-    //canvas.height = 400;
+
     var context = canvas.getContext('2d');
-    context.drawImage(video, 0, 0);
+    // trying to fix the problems with taking the photo
+    context.drawImage(video, 0, 0, videoHeight, videoWidth);
 }
 
 function transitionDisplay() {
@@ -65,7 +74,6 @@ function transitionDisplay() {
     document.getElementById("cameraDisplay").style.opacity = 0
     document.getElementById("canvasPhoto").style.opacity = 1
 }
-
 
 ///////////////////////////////////////
 ///////RETIRED CODE/////////////////////

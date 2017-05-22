@@ -16,7 +16,6 @@ function displayVideo() {
         // set video standards 
         var constraints = {
             video: true,
-
             audio: false
         };
         // set up the video to display 
@@ -40,17 +39,6 @@ function displayVideo() {
     }
 } // end displayVideo
 
-/*Show Video Function 
-function showVideo() {
-    // transition rather than hide & show to remove odds of jarring 
-       // document.getElementById("cameraDisplay").style.height = "200px"
-    document.getElementById("cameraDisplay").style.height = "500px"
-}
-
-function hideVideo() {
-    // document.getElementById("cameraDisplay").style.height = "0px"
-    document.getElementById("cameraDisplay").style.height = "0px"
-}*/
 function displayPhoto() {
     capturePhoto()
     transitionDisplay()
@@ -77,3 +65,19 @@ function transitionDisplay() {
     document.getElementById("cameraDisplay").style.opacity = 0
     document.getElementById("canvasPhoto").style.opacity = 1
 }
+
+
+///////////////////////////////////////
+///////RETIRED CODE/////////////////////
+//////////////////////////////////////
+/*Show Video Function 
+function showVideo() {
+    // transition rather than hide & show to remove odds of jarring 
+       // document.getElementById("cameraDisplay").style.height = "200px"
+    document.getElementById("cameraDisplay").style.height = "500px"
+}
+
+function hideVideo() {
+    // document.getElementById("cameraDisplay").style.height = "0px"
+    document.getElementById("cameraDisplay").style.height = "0px"
+}*/

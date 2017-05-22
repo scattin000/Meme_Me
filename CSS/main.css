@@ -4,14 +4,12 @@
     margin-left: -5em;
     opacity: 1;
     transition: opacity 1s;
-    height: 400px;
-    width: 600px;
+    overflow: hidden;
 }
 
 #canvasPhoto {
     position: relative;
-    margin-top: -25em;
-    margin-left: -5em;
+    margin: auto, auto, auto, auto;
     opacity: 1;
     transition: opacity 1s;
 }

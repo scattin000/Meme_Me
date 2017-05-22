@@ -9,7 +9,7 @@
 
 #canvasPhoto {
     position: relative;
-    margin: auto, auto, auto, auto;
+    margin-top: -30em;
     opacity: 1;
     transition: opacity 1s;
 }

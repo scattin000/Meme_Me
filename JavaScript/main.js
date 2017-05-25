@@ -2,14 +2,14 @@
 var video = null;
 //sizing variables
 var deviceWidth = window.innerWidth;
+var deviceHeight = window.innerHeight;
 
 //canvas size 
-var canvasWidth = Math.min(480, deviceWidth - 20);;
-var canvasHeight = Math.min(480, deviceWidth - 20);;
+var canvasWidth = Math.min(600, deviceWidth - 20);
+var canvasHeight = Math.min(480, deviceHeight - 20);
 //video size
 var videoWidth = Math.min(600, deviceWidth - 20);
-var videoHeight = Math.min(480, deviceWidth - 20);
-
+var videoHeight = Math.min(480, deviceHeight - 20);
 
 function checkUserMedia() {
     return navigator.getUserMedia = navigator.getUserMedia ||
@@ -33,8 +33,8 @@ function displayVideo() {
             // URL Object is different in WebKit
             var url = window.URL || window.webkitURL;
 
+            // try to set up the video size
             video = document.getElementById("cameraDisplay")
-                // try to set up the video size
             video.width = videoWidth;
             video.height = videoHeight;
             // create the url and set the source of the video element
@@ -65,7 +65,7 @@ function capturePhoto() {
 
     var context = canvas.getContext('2d');
     // trying to fix the problems with taking the photo
-    context.drawImage(video, 0, 0, videoHeight, videoWidth);
+    context.drawImage(video, 0, 0, videoWidth, videoHeight);
 }
 
 function transitionDisplay() {
@@ -74,6 +74,7 @@ function transitionDisplay() {
     document.getElementById("cameraDisplay").style.opacity = 0
     document.getElementById("canvasPhoto").style.opacity = 1
 }
+
 function createInputTextBox() {
     //create text input box
     var addText = document.createElement("INPUT");
@@ -100,4 +101,3 @@ function hideVideo() {
     // document.getElementById("cameraDisplay").style.height = "0px"
     document.getElementById("cameraDisplay").style.height = "0px"
 }*/
-

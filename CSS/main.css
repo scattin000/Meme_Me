@@ -15,6 +15,7 @@
 button {
     position: relative;
 }
+
 #takePhoto {
     position: center;
 }
@@ -27,6 +28,8 @@ button {
     width: 10em;
     font-family: Arial, Helvetica, sans-serif;
     position: left;
+}
+
 body {
     background-color: black;
 }

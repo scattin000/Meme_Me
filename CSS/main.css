@@ -12,8 +12,21 @@
     margin-top: -30em;
     opacity: 1;
     transition: opacity 1s;
+    border: 1px solid rebeccapurple;
 }
 
-button {
-    position: relative;
+#takePhoto {
+    position: center;
+}
+#canvasPhotoText {
+    position: left;
+}
+#submit {
+    position: left;
+} 
+
+#canvasPhotoText {
+    width: 10em;
+    font-family: Arial, Helvetica, sans-serif;
+    position: center;
 }

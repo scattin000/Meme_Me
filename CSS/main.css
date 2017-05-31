@@ -1,10 +1,8 @@
 #cameraDisplay {
     position: relative;
     margin-top: 10em;
-    margin-left: -5em;
     opacity: 1;
     transition: opacity 1s;
-    overflow: hidden;
 }
 
 #canvasPhoto {
@@ -14,13 +12,13 @@
     transition: opacity 1s;
     border: 1px solid rebeccapurple;
 }
-
+button {
+    position: relative;
+}
 #takePhoto {
     position: center;
 }
-#canvasPhotoText {
-    position: left;
-}
+
 #submit {
     position: left;
 } 
@@ -28,5 +26,7 @@
 #canvasPhotoText {
     width: 10em;
     font-family: Arial, Helvetica, sans-serif;
-    position: center;
+    position: left;
+body {
+    background-color: black;
 }

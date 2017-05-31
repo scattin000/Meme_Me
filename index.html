@@ -14,26 +14,27 @@
     <section id="memeCanvas">
         <!--Don't show until user selects "camera" button-->
         <video id="cameraDisplay"></video>
-        <!--(MC Reminder) Place the drag and drop text box 
-        on the "canvasPhoto" -->
+        <div> <!--http://jsfiddle.net/m1erickson/9xAGa/ -->
+            <input id="canvasPhotoText" type="text" placeholder="Add text to photo...">
+            <br>
+            <button id="submit">Submit and drag around photo!</button>
+            <br>
+        </div>
         <!--Display the canvas-->
         <canvas id="canvasPhoto"></canvas>
-        <!--http://jsfiddle.net/m1erickson/9xAGa/ -->
     </section>
-    <div>
-        <input id="canvasPhotoText" type="text" placeholder="Add text to photo...">
-        <br>
-        <button id="submit">Submit and drag on photo!</button>
-        <br>
-    </div>
-    <!-- <img draggable="true">
-        https://www.w3schools.com/html/html5_draganddrop.asp -->
-    
-    <!-- Take the photo here-->
-    <button id="takePhoto" onclick="displayPhoto()">Take Photo</button>
-    
-    <!--Setup "Snapping" Drag and Drop User Input text "http://interactjs.io/"-->
-    
-</body>
 
+    <!-- Take the photo here-->
+    <button id="takePhoto" onclick="displayPhoto()">
+        <img src="http://iconshow.me/media/images/ui/ios7-icons/png/512/camera_2.png" width="60" 
+        height="45">
+    </button>
+    <!--Get image URL-->
+    <section>
+        <button id="canvasURL" onclick="getURL()">Get URL</button>
+        <!--<footer>
+            <a id="download-link" href="#">Get</a>
+        </footer>-->
+    </section>
+</body>
 </html>

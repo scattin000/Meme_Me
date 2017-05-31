@@ -1,37 +1,91 @@
 ///DOM Objects///
 var video = null;
-/*Pulled SC Canvas stuff START HERE */
- var canvas = document.getElementById('canvasPhoto');
-// set the size of the canvas image (took forever to figure this out!)
+
+//sizing variables
 var deviceWidth = window.innerWidth;
+var deviceHeight = window.innerHeight;
+
+//canvas size 
 var canvasWidth = Math.min(600, deviceWidth - 20);
-var canvasHeight = Math.min(480, deviceWidth - 20);
-canvas.width = canvasWidth;
-canvas.height = canvasHeight;
-//canvas.width = 600;
-//canvas.height = 400;
-var context = canvas.getContext('2d');
-context.drawImage(video, 0, 0);
-/*Pulled SC Canvas stuff END HERE */
+var canvasHeight = Math.min(480, deviceHeight - 20);
+//video size
+var videoWidth = Math.min(600, deviceWidth - 20);
+var videoHeight = Math.min(480, deviceHeight - 20);
 
+function checkUserMedia() {
+    return navigator.getUserMedia = navigator.getUserMedia ||
+        navigator.webkitGetUserMedia ||
+        navigator.mozGetUserMedia ||
+        navigator.msGetUserMedia || null;
+}
 
-/*START HERE...MC added functionality to canvas...*/
-// variables used to get mouse position on the canvas
-var $canvas = $("#canvasPhoto");
-var canvasOffset = $canvas.offset();
-var offsetX = canvasOffset.left;
-var offsetY = canvasOffset.top;
-var scrollX = $canvas.scrollLeft();
-var scrollY = $canvas.scrollTop();
-// variables to save last mouse position
-// used to see how far the user dragged the mouse
-// and then move the text by that distance
-var startX;
-var startY;
-// an array to hold text objects
-var texts = [];
-// this var will hold the index of the hit-selected text
-var selectedText = -1;
+/*Function displayVideo Only called when camera button is selected  */
+function displayVideo() {
+    if (checkUserMedia()) {
+        //turn off the video 
+        //var videoPlaying = false;
+        // set video standards 
+        var constraints = {
+            video: true,
+            audio: false
+        };
+        // set up the video to display 
+        var media = navigator.getUserMedia(constraints, function(stream) {
+            // URL Object is different in WebKit
+            var url = window.URL || window.webkitURL;
+
+            // try to set up the video size
+            video = document.getElementById("cameraDisplay")
+            video.width = videoWidth;
+            video.height = videoHeight;
+            // create the url and set the source of the video element
+            video.src = url ? url.createObjectURL(stream) : stream
+
+            // Start the video
+            video.play()
+                //videoPlaying = true;
+                // third parameter (error handling)
+        }, function(error) {
+            console.log("ERROR")
+            console.log(error)
+        });
+    }
+} // end displayVideo
+
+function displayPhoto() {
+    capturePhoto()
+    transitionDisplay()
+}
+
+function capturePhoto() {
+    var canvas = document.getElementById('canvasPhoto');
+
+    // set the size of the canvas image (took forever to figure this out!)
+    canvas.width = canvasWidth;
+    canvas.height = canvasHeight;
+
+    var context = canvas.getContext('2d');
+    // trying to fix the problems with taking the photo
+    context.drawImage(video, 0, 0, videoWidth, videoHeight);
+
+    /**********Put this under capturePhoto()*************************
+    // //START HERE...MC added functionality to canvas...
+    // variables used to get mouse position on the canvas
+    var $canvas = $("#canvasPhoto");
+    var canvasOffset = $canvas.offset();
+    var offsetX = canvasOffset.left;
+    var offsetY = canvasOffset.top;
+    var scrollX = $canvas.scrollLeft();
+    var scrollY = $canvas.scrollTop();
+    // variables to save last mouse position
+    // used to see how far the user dragged the mouse
+    // and then move the text by that distance
+    var startX;
+    var startY;
+    // an array to hold text objects
+    var texts = [];
+    // this var will hold the index of the hit-selected text
+    var selectedText = -1;
 
 // clear the canvas & redraw all texts
 function draw() {
@@ -138,86 +192,9 @@ $("#submit").click(function () {
     draw();
 
 });
-/*END HERE MC added functions */
-
-function checkUserMedia() {
-    return navigator.getUserMedia = navigator.getUserMedia ||
-        navigator.webkitGetUserMedia ||
-        navigator.mozGetUserMedia ||
-        navigator.msGetUserMedia || null;
+//END HERE MC added functions 
+**********************************/
 }
-
-/*Function displayVideo Only called when camera button is selected  */
-function displayVideo() {
-    if (checkUserMedia()) {
-        //turn off the video 
-        //var videoPlaying = false;
-        // set video standards 
-        var constraints = {
-            video: true,
-            audio: false
-        };
-        // set up the video to display 
-        var media = navigator.getUserMedia(constraints, function(stream) {
-            // URL Object is different in WebKit
-            var url = window.URL || window.webkitURL;
-
-            video = document.getElementById("cameraDisplay")
-                // try to set up the video size
-                // create the url and set the source of the video element
-            video.src = url ? url.createObjectURL(stream) : stream
-
-            // Start the video
-            video.play()
-                //videoPlaying = true;
-                // third parameter (error handling)
-        }, function(error) {
-            console.log("ERROR")
-            console.log(error)
-        });
-    }
-} // end displayVideo
-
-function displayPhoto() {
-    //capturePhoto()
-    transitionDisplay()
-}
-
-// function capturePhoto() {
-//     var canvas = document.getElementById('canvasPhoto');
-//     // set the size of the canvas image (took forever to figure this out!)
-//     var deviceWidth = window.innerWidth;
-//     var canvasWidth = Math.min(600, deviceWidth - 20);
-//     var canvasHeight = Math.min(480, deviceWidth - 20);
-
-//     canvas.width = canvasWidth;
-//     canvas.height = canvasHeight;
-//     //canvas.width = 600;
-//     //canvas.height = 400;
-//     var context = canvas.getContext('2d');
-//     context.drawImage(video, 0, 0);
-
-//     /*START HERE...MC added functionality to canvas...*/
-//     // variables used to get mouse position on the canvas
-//     var $canvas = $("#canvasPhoto");
-//     var canvasOffset = $canvas.offset();
-//     var offsetX = canvasOffset.left;
-//     var offsetY = canvasOffset.top;
-//     var scrollX = $canvas.scrollLeft();
-//     var scrollY = $canvas.scrollTop();
-//     // variables to save last mouse position
-//     // used to see how far the user dragged the mouse
-//     // and then move the text by that distance
-//     var startX;
-//     var startY;
-
-//     // an array to hold text objects
-//     var texts = [];
-
-//     // this var will hold the index of the hit-selected text
-//     var selectedText = -1;
-
-// }
 
 function transitionDisplay() {
     // set the video to opaque & set the canvas to transparent 
@@ -225,9 +202,6 @@ function transitionDisplay() {
     document.getElementById("cameraDisplay").style.opacity = 0
     document.getElementById("canvasPhoto").style.opacity = 1
 }
-
-
-c
 
 ///////////////////////////////////////
 ///////RETIRED CODE/////////////////////
@@ -242,5 +216,16 @@ function showVideo() {
 function hideVideo() {
     // document.getElementById("cameraDisplay").style.height = "0px"
     document.getElementById("cameraDisplay").style.height = "0px"
+}*/
+
+/*function createInputTextBox() {
+    //create text input box
+    var addText = document.createElement("INPUT");
+    addText.setAttribute("type", "text");
+    document.getElementById("myText").maxLength = "30";
+}
+
+function moveTextInputBox() {
+    //Enable user to move textBox on captured photo
 }*/
 
